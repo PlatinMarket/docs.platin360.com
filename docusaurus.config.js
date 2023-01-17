@@ -28,6 +28,19 @@ const config = {
     locales: ['tr'],
   },
 
+  themes: [
+    [
+      // @ts-ignore
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
+      // @ts-ignore
+      ({
+        language: ['tr'],
+        hashed: true,
+      }),
+    ],
+  ],
+
   presets: [
     [
       'classic',
