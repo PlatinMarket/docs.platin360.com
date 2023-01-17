@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs_platin_360_com=self.webpackChunkdocs_platin_360_com||[]).push([[6217],{5745:s=>{s.exports=JSON.parse('{"name":"docusaurus-plugin-content-pages","id":"default"}')}}]);
