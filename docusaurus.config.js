@@ -71,20 +71,20 @@ const config = {
       navbar: {
         title: 'Platin360',
         logo: {
-          alt: 'My Site Logo',
-          src: 'img/logo.svg',
+          alt: 'Platin360',
+          src: 'img/platin360docs.png',
         },
         items: [
           {
             type: 'doc',
             docId: 'intro',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Bilgi Merkezi',
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
-            label: 'GitHub',
+            href: 'https://www.platin360.app',
+            label: 'Platin360',
             position: 'right',
           },
         ],
@@ -132,7 +132,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Platin360`,
       },
       prism: {
         theme: lightCodeTheme,
