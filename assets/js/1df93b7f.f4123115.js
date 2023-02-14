@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs_platin_360_com=self.webpackChunkdocs_platin_360_com||[]).push([[237],{9754:(t,c,e)=>{e.r(c),e.d(c,{default:()=>s});var n=e(7294),o=e(6550);function s(){return n.createElement(o.l_,{to:"/docs/introduction"})}}}]);
