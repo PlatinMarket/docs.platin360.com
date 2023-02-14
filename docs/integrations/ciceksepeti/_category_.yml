@@ -1,0 +1,9 @@
+position: 5
+label: 'Çiçeksepeti'
+collapsible: true
+collapsed: true
+link:
+  type: generated-index
+  title: Genel Bakış
+customProps:
+  description: Çiçeksepeti entegrasyon süreçleri

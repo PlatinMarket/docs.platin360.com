@@ -1,0 +1,9 @@
+position: 4
+label: 'Platinmarket'
+collapsible: true
+collapsed: true
+link:
+  type: generated-index
+  title: Genel Bakış
+customProps:
+  description: Platinmarket entegrasyon süreçleri

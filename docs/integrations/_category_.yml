@@ -1,0 +1,9 @@
+position: 1
+label: 'Entegrasyonlar'
+collapsible: true
+collapsed: true
+link:
+  type: generated-index
+  title: Tutorial overview
+customProps:
+  description: Pazaryeri entegrasyon süreçleri

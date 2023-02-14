@@ -1,0 +1,9 @@
+position: 1
+label: 'Trendyol'
+collapsible: true
+collapsed: true
+link:
+  type: generated-index
+  title: Genel Bakış
+customProps:
+  description: Trendyol entegrasyon süreçleri
