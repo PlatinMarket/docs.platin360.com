@@ -1,0 +1,627 @@
+openapi: 3.0.2
+info:
+  version: 0.1.0-preview+1
+  title: Platin360
+  contact:
+    name: Platin360 Development Team
+    email: dev@platin360.com
+  termsOfService: https://platin360.app/terms-of-service
+  description: >-
+    # Platin360 Public Api Documentation
+
+    This documentation is under active development, feedbacks, requests and
+    questions are welcome.
+externalDocs:
+  url: https://docs.platin360.com
+  description: Documentatin Reference
+tags:
+  - name: product
+    description: Product Service
+  - name: inventory
+    description: Inventory Service
+  - name: order
+    description: Order Service
+servers:
+  - url: http://127.0.0.1:8000/api
+    description: Development
+  - url: https://platin360.app/api
+    description: Production
+paths:
+  /product/query:
+    post:
+      operationId: GetProductsByQuery
+      tags:
+        - product
+      description: |
+        Product listing query
+      requestBody:
+        $ref: '#/components/requestBodies/GetProductsByQuery'
+      responses:
+        '200':
+          $ref: '#/components/responses/GetProductsByQuery'
+  /product:
+    post:
+      operationId: CreateProduct
+      tags:
+        - product
+      description: |
+        Create product
+      requestBody:
+        $ref: '#/components/requestBodies/CreateProduct'
+      responses:
+        '200':
+          $ref: '#/components/responses/CreateProduct'
+  /product/{id}:
+    get:
+      operationId: GetProductById
+      description: Show product
+      tags:
+        - product
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Product identifier
+      responses:
+        '200':
+          $ref: '#/components/responses/CreateProduct'
+    put:
+      operationId: UpdateProductById
+      description: Update product
+      tags:
+        - product
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Product identifier
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        '200':
+          $ref: '#/components/responses/CreateProduct'
+  /inventory/query:
+    post:
+      operationId: GetInventoriesByQuery
+      description: GetInventoriesByQuery definition
+      tags:
+        - inventory
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryBuilderRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryBuilderResponse'
+  /inventory/updateBySkuOrBarcode:
+    put:
+      operationId: UpdateBySkuOrBarcode
+      tags:
+        - inventory
+      description: >
+        Using this service, you can update a variant's stock quantity by either
+        a sku or barcode.
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateInventoryBySkuOrBarcode'
+      responses:
+        '201':
+          $ref: '#/components/responses/UpdateInventoryBySkuOrBarcode'
+  /order/query:
+    post:
+      tags:
+        - order
+      operationId: GetOrdersByQuery
+      description: Order query
+      requestBody:
+        $ref: '#/components/requestBodies/GetOrdersByQuery'
+      responses:
+        '200':
+          $ref: '#/components/responses/GetOrdersByQuery'
+  /order/{id}:
+    get:
+      operationId: GetOrderById
+      description: GetOrderById definition
+      tags:
+        - order
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Order identifier
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+components:
+  schemas:
+    Currency:
+      description: |
+        Currency Model Definition
+      properties:
+        id:
+          type: integer
+          example: 1
+          description: |
+            Currency identifier
+        code:
+          type: string
+          example: TRY
+          description: |
+            Currency code
+        name:
+          type: string
+          example: Turkish Lira
+          description: |
+            Currency name
+    Level:
+      description: |
+        Level Model Definition
+      properties:
+        id:
+          type: integer
+          example: 1
+          description: |
+            Level identifier
+        inventory_item_id:
+          type: integer
+          example: 1
+          description: |
+            Related inventory item identifer
+        location_id:
+          type: integer
+          example: 1
+          description: Related location identifier
+    Inventory:
+      description: |
+        Inventory Model Definition
+      properties:
+        id:
+          type: integer
+          example: 1
+          description: |
+            Inventory identifier
+        product_variant_id:
+          type: integer
+          example: 1
+          description: |
+            Related product variant identifier
+        sku:
+          type: string
+          example: SKU001
+          description: |
+            Stock Keeping Unit
+        levels:
+          type: array
+          items:
+            $ref: '#/components/schemas/Level'
+        created_at:
+          type: string
+          example: '2023-02-13T10:53:53.000000Z'
+          description: |
+            Create date of the object
+        updated_at:
+          type: string
+          example: '2023-02-13T10:53:53.000000Z'
+          description: |
+            Update date of the object
+    ProductVariant:
+      description: |
+        Variant Model Definition
+      properties:
+        id:
+          type: integer
+          example: 1
+          description: |
+            Variant identifier
+        uuid:
+          type: string
+          nullable: true
+          default: null
+          description: |
+            Varyasyonun mağaza benzersiz kodu
+        product_id:
+          type: integer
+          example: 1
+          description: |
+            Related product identifer
+        title:
+          type: string
+          nullable: true
+          example: API Test Product Variant
+          description: |
+            Variant title
+        price:
+          type: number
+          nullable: true
+          example: 100.5
+          description: |
+            Variant price
+        compare_price:
+          type: number
+          nullable: true
+          example: 120.5
+          description: |
+            Variant compare price
+        barcode:
+          type: string
+          nullable: true
+          example: BARCODE001
+          description: |
+            Variant barcode
+        sort:
+          type: integer
+          default: 0
+          description: |
+            Variant sorting rank
+        inventory:
+          $ref: '#/components/schemas/Inventory'
+        created_at:
+          type: string
+          example: '2023-02-13T10:53:53.000000Z'
+          description: |
+            Create date of the object
+        updated_at:
+          type: string
+          example: '2023-02-13T10:53:53.000000Z'
+          description: |
+            Update date of the object
+    Product:
+      description: |
+        Product Model Definition
+      properties:
+        id:
+          type: integer
+          example: 1
+          description: Product identifier
+        uuid:
+          type: string
+          example: 91ccf111-56c9-5a10-8bf7-4353b23b98f3
+          description: |
+            Product unique identifier
+        currency_id:
+          type: integer
+          example: 1
+          description: |
+            Product currency identifier
+        title:
+          type: string
+          example: API Test Product
+          description: |
+            Product title
+        status:
+          type: string
+          example: draft
+          enum:
+            - draft
+            - passive
+            - active
+          description: |
+            Product listing status
+        created_at:
+          type: string
+          example: '2023-02-13T10:53:53.000000Z'
+          description: |
+            Create date of the object
+        updated_at:
+          type: string
+          example: '2023-02-13T10:53:53.000000Z'
+          description: |
+            Update date of the object
+        variants:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductVariant'
+    Order:
+      description: |
+        Order definition
+      properties:
+        id:
+          type: integer
+          example: 1001
+          description: |
+            Order identifier
+        uuid:
+          type: string
+          example: e5cd2ce2-bc62-5470-b9a3-f323c0e2dc5d
+          description: |
+            Order identifier
+        customer_id:
+          type: integer
+          example: 1
+          description: |
+            Related customer identifier
+        amount:
+          type: number
+          example: 1120.5
+          description: |
+            Order amount in Turkish Lira
+        ordered_at:
+          type: string
+          example: '2023-02-13T10:53:53.000000Z'
+          description: |
+            Order date of the object
+        created_at:
+          type: string
+          example: '2023-02-13T10:53:53.000000Z'
+          description: |
+            Create date of the object
+        updated_at:
+          type: string
+          example: '2023-02-13T10:53:53.000000Z'
+          description: |
+            Update date of the object
+    QueryBuilderRequest:
+      description: |
+        QueryBuilderRequest definition
+      properties:
+        page:
+          type: integer
+          default: 1
+          minimum: 0
+        limit:
+          type: integer
+          default: 25
+          minimum: 25
+          maximum: 100
+        relation:
+          type: array
+          default: null
+          nullable: true
+        filter:
+          type: object
+          default: null
+          nullable: true
+        search:
+          type: object
+          default: null
+          nullable: true
+    QueryBuilderResponse:
+      description: |
+        QueryBuilderResponse definition
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+        meta:
+          type: object
+          example:
+            current_page:
+              type: integer
+              example: 1
+            last_page:
+              type: integer
+              example: 4
+            per_page:
+              type: integer
+              example: 25
+            total:
+              type: integer
+              example: 100
+  requestBodies:
+    GetProductsByQuery:
+      required: false
+      description: Get products by query
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/QueryBuilderRequest'
+            properties:
+              relation:
+                type: array
+                example:
+                  - variants
+                  - currency
+                  - images
+              filter:
+                type: object
+                example:
+                  id: 12
+                  variants:
+                    type: object
+                    example:
+                      barcode:
+                        type: string
+                        example: like_%BARCODE%
+    CreateProduct:
+      required: true
+      description: Create Product
+      content:
+        application/json:
+          schema:
+            description: |
+              CreateProductRequest definition
+            required:
+              - currency_id
+              - variants
+            properties:
+              currency_id:
+                description: |
+                  Currency of the product
+                type: integer
+                example: 1
+              variants:
+                type: array
+                minItems: 1
+                description: |
+                  Variants of the product
+                items:
+                  required:
+                    - inventory
+                  properties:
+                    inventory:
+                      type: object
+                      description: |
+                        Inventory of the variant
+                      required:
+                        - levels
+                      properties:
+                        levels:
+                          minItems: 1
+                          type: array
+                          description: |
+                            Inventory level connection
+                          items:
+                            required:
+                              - location_id
+                            properties:
+                              location_id:
+                                type: integer
+                                example: 1
+                                description: |
+                                  Depo
+    UpdateInventoryBySkuOrBarcode:
+      required: true
+      description: |
+        Update inventory stock by sku or barcode
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - type: object
+                required:
+                  - sku
+                  - value
+                properties:
+                  sku:
+                    type: string
+                    example: SKU1
+                    description: |
+                      The Stock Keeping Unit of the inventory.
+                  method:
+                    type: string
+                    default: set
+                    enum:
+                      - adjust
+                      - set
+                    description: >
+                      The update method, **set** will equalize the current stock
+                      to given value while **adjust** will append the given
+                      value to the current stock.
+                  value:
+                    type: integer
+                    example: 1
+                    description: |
+                      Update value the stock will be manipulated according to.
+                  location_id:
+                    type: integer
+                    default: null
+                    description: >
+                      Location identifier of the level, if not specified,
+                      default location will be used.
+              - type: object
+                required:
+                  - barcode
+                  - value
+                properties:
+                  barcode:
+                    type: string
+                    example: SKU1
+                    description: |
+                      The Barcode of the variant.
+                  method:
+                    type: string
+                    default: set
+                    enum:
+                      - adjust
+                      - set
+                    description: >
+                      The update method, **set** will equalize the current stock
+                      to given value while **adjust** will append the given
+                      value to the current stock.
+                  value:
+                    type: integer
+                    example: 1
+                    description: |
+                      Update value the stock will be manipulated according to.
+                  location_id:
+                    type: integer
+                    default: null
+                    description: >
+                      Location identifier of the level, if not specified,
+                      default location will be used.
+    GetOrdersByQuery:
+      required: false
+      description: |
+        GetOrdersByQuery definition
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/QueryBuilderRequest'
+  responses:
+    GetProductsByQuery:
+      description: OK
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/QueryBuilderResponse'
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+    CreateProduct:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Product'
+    UpdateInventoryBySkuOrBarcode:
+      description: OK
+      content:
+        application/json:
+          schema:
+            properties:
+              id:
+                type: integer
+                description: |
+                  The transaction identifier for the stock activity.
+              adjustment:
+                type: integer
+                description: >
+                  The applied relative adjustment to the previous stock to
+                  eqaulize the current stock into desired value.
+              inventory_level_id:
+                type: integer
+                description: |
+                  The related inventory level identifer.
+    GetOrdersByQuery:
+      description: OK
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/QueryBuilderResponse'
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Order'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Platin360
+      description: Platin360 development token
+security:
+  - bearerAuth: []

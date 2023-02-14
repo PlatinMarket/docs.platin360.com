@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs_platin_360_com=self.webpackChunkdocs_platin_360_com||[]).push([[727],{9162:s=>{s.exports=JSON.parse('{"name":"docusaurus-plugin-redoc","id":"plugin-redoc-0"}')}}]);
