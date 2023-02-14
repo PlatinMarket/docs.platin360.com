@@ -484,9 +484,16 @@ components:
                             required:
                               - location_id
                             properties:
-                              location_id:
-                                type: integer
-                                example: 1
+                              location:
+                                type: object
+                                required:
+                                  - id
+                                properties:
+                                  id:
+                                    type: integer
+                                    example: 1
+                                    description: |
+                                      Location identifier
                                 description: |
                                   Depo
     UpdateInventoryBySkuOrBarcode:
