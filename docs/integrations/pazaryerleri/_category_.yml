@@ -1,9 +1,0 @@
-position: 1
-label: 'Pazaryeri Entegrasyonları'
-collapsible: true
-collapsed: true
-link:
-  type: generated-index
-  title: Pazaryeri Entegrasyonları
-customProps:
-  description: Pazaryeri Entegrasyonları
