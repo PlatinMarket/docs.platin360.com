@@ -11,7 +11,7 @@ Platinmarket e-ticaret sitenizin yönetim paneline giriş yaptıktan sonra
 **Araçlar>API Anahtarları** sayfasına gidiyoruz, gelen ekranda  **Yeni API Anahtarı** oluştur alanına IP adresinizi yazıp oluştur butonuna basıyoruz. Oluşturulan anahtarı kopyala işlemi yapıyoruz.
 
 
-![API Anahtarı ](/static/img/key-set.png "API Anahtarı")
+![API Anahtarı ](/img/key-set.png "API Anahtarı")
 
 
 **Platin360'a Platinmarket API Anahtarını Bağlama.**
@@ -19,10 +19,10 @@ Platinmarket e-ticaret sitenizin yönetim paneline giriş yaptıktan sonra
 
 Platin360 yönetim panelimize giriş yaptıktan sonra sol taraftaki menüden **Satış Kanalları sekmesinden Platinmarketi'i seçiyoruz** gelen ekranda panelden kopyaladığımız API ahatarını yapıştırıyoruz ve bağla butonuna basıyoruz.
 
-![Token Bağla ](/static/img/token-set.png "Token Bağla")
+![Token Bağla ](/img/token-set.png "Token Bağla")
 
-İşlem bu kadar Platinmarket entegrasyonunuz hazır. içe aktar butonuna basarak e-ticaret sitenizden ürünleri
+İşlem bu kadar Platinmarket entegrasyonunuz hazır "içe aktar" butonuna basarak e-ticaret sitenizden ürünleri
 Platin360 sistemine kolayca aktarabilirsiniz.
 
 
-![Ürün içe aktar ](/static/img/token-set.png "Ürün içe aktar")
+![Ürün içe aktar ](/img/token-set.png "Ürün içe aktar")
