@@ -25,4 +25,4 @@ Platin360 yönetim panelimize giriş yaptıktan sonra sol taraftaki menüden **S
 Platin360 sistemine kolayca aktarabilirsiniz.
 
 
-![Ürün içe aktar ](/img/token-set.png "Ürün içe aktar")
+![Ürün içe aktar ](/img/ice-aktar.png "Ürün içe aktar")
