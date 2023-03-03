@@ -1,28 +1,23 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 # API Anahtarı Alma
 
-**Platinnarket tarafından API Anahtarını Alma.**
+**Çiçeksepeti Tarafından API Anahtarını Alma.**
 
-Platinmarket e-ticaret sitenizin yönetim paneline giriş yaptıktan sonra
+[seller.ciceksepeti.com](https://seller.ciceksepeti.com/) adresine gidin satıcı bilgileriniz ile giriş yaptıktan sonra
 
-**Araçlar>API Anahtarları** sayfasına gidiyoruz, gelen ekranda  **Yeni API Anahtarı** oluştur alanına IP adresinizi yazıp oluştur butonuna basıyoruz. Oluşturulan anahtarı kopyala işlemi yapıyoruz.
+**Sağ üstdeki mağaza adı>Hesap Yönetimi** sayfasına gidiyoruz, gelen ekranda **Entegrasyon Bilgilerim** butonuna basıyoruz burada platin360'a ekleyeceğimiz **API Key** bilgisini görüntüleyebiliyoruz.
 
+![API KEY](/img/ciceksepeti-api-2.png "API KEY")
 
-![API Anahtarı ](/img/key-set.png "API Anahtarı")
+**Platin360'a Çiçeksepeti API Anahtarını Bağlama.**
 
+Platin360 yönetim panelimize giriş yaptıktan sonra sol taraftaki menüden **Satış Kanalları sekmesinden Çiçeksepeti'ni seçiyoruz** gelen ekranda 
 
-**Platin360'a Platinmarket API Anahtarını Bağlama.**
+**Application Key** alanına - **Çiçeksepetinden** opyaladığımız **API Key** kodunu yapıştırıyoruz.
 
+![API Anahtarı ](/img/cicek-sepeti-api.png "API Anahtarı")
 
-Platin360 yönetim panelimize giriş yaptıktan sonra sol taraftaki menüden **Satış Kanalları sekmesinden Platinmarketi'i seçiyoruz** gelen ekranda panelden kopyaladığımız API ahatarını yapıştırıyoruz ve bağla butonuna basıyoruz.
-
-![Token Bağla ](/img/token-set.png "Token Bağla")
-
-İşlem bu kadar Platinmarket entegrasyonunuz hazır "içe aktar" butonuna basarak e-ticaret sitenizden ürünleri
-Platin360 sistemine kolayca aktarabilirsiniz.
-
-
-![Ürün içe aktar ](/img/ice-aktar.png "Ürün içe aktar")
+İşlem bu kadar Çiçeksepeti entegrasyonunuz hazır.
